@@ -9,19 +9,19 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button registerPageBtn;
+    private Button addProductBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        registerPageBtn = findViewById(R.id.idBtnRegisterPage);
+        addProductBtn = findViewById(R.id.idBtnAddProduct);
 
-        registerPageBtn.setOnClickListener(new View.OnClickListener() {
+        addProductBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, RegisterActivity.class);
+                Intent i = new Intent(MainActivity.this, AddProductActivity.class);
                 startActivity(i);
             }
         });

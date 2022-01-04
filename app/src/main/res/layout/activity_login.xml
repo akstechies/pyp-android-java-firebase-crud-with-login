@@ -71,15 +71,15 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        android:id="@+id/idBtnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/idTILPassword"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="20dp"
         android:text="Login"
-        android:layout_marginTop="40dp"
-        android:id="@+id/idBtnLogin"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white" />
 
     <TextView
         android:id="@+id/idTVRegister"
@@ -92,6 +92,15 @@
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="18sp" />
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/idPBLoading"
+        android:indeterminate="true"
+        android:indeterminateDrawable="@drawable/progress_back"
+        android:visibility="gone"/>
 
     <ProgressBar
         android:layout_width="wrap_content"

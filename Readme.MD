@@ -51,7 +51,14 @@ add permission in manifest file
 
 Login Activity done
 
-Add Course Activity (Till 52.00)
+Add Course Activity
+
+Create a new Java class ProductRVModel, using for recycler view and adding data
+-> Generate Constructor, Getter and Setter => Right Click->Generate
+-> class ProductRVModel implements Parcelable
+-> Parcelable used as passing data from one activity to another activity
+
+Add product activity done (Till 01:09)
 
 
 

@@ -13,7 +13,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/idBtnRegisterPage"
-        android:text="Register"/>
+        android:id="@+id/idBtnAddProduct"
+        android:text="Add Product"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
