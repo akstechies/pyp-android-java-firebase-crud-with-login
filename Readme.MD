@@ -49,8 +49,9 @@ create new drawable resource file for custom prgress bar
 
 add permission in manifest file
 
-Login (Till 42:57)
+Login Activity done
 
+Add Course Activity (Till 52.00)
 
 
 
