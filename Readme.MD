@@ -62,6 +62,11 @@ Add product activity done (Till 01:09)
 
 Edit Product Activity
 
+create a new icon for activity main FloatingActionButton
+-> drawable-> new -> vector asset
+
+On main activity (Till 01:27:30)
+
 
 
 
