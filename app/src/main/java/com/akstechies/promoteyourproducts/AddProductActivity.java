@@ -50,6 +50,7 @@ public class AddProductActivity extends AppCompatActivity {
         addProductBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                loadingPB.setVisibility(View.VISIBLE);
                 String productName = productNameEdt.getText().toString();
                 String productPrice = productPriceEdt.getText().toString();
                 String productImageLink = productImageLinkEdt.getText().toString();
@@ -65,6 +66,7 @@ public class AddProductActivity extends AppCompatActivity {
                 databaseReference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        loadingPB.setVisibility(View.GONE);
                         databaseReference.child(productId).setValue(productRVModel);
                         Toast.makeText(AddProductActivity.this, "Product Added Successfully", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(AddProductActivity.this, MainActivity.class));
@@ -72,6 +74,7 @@ public class AddProductActivity extends AppCompatActivity {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
+                        loadingPB.setVisibility(View.GONE);
                         Toast.makeText(AddProductActivity.this, "Error! " + error.toString(), Toast.LENGTH_SHORT).show();
                     }
                 });
