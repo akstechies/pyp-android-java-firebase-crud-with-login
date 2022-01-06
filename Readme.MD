@@ -75,8 +75,14 @@ On main activity (Till 01:27:30)
 	- create inner for ViewHolder after implemet methods on clicking public ProductRVAdapter.ViewHolder method
 
 
+Create a bottom sheet layout when main activity product card click
+- bottom_sheet_dialogue (Relative Layout)
 
-
+Create top navigation menu for logout
+- res-> new-> android resource directory
+	- type and name = menu
+- in menu, new -> main resource file
+	- name= menu_main
 
 
 
