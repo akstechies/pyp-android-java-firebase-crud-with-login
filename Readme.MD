@@ -66,6 +66,13 @@ create a new icon for activity main FloatingActionButton
 -> drawable-> new -> vector asset
 
 On main activity (Till 01:27:30)
+- create adapter class for recycler view as well as layout file
+- layout folder-> new-> layout resource file->
+	name: product_rv_item
+	root: androidx.cardview.widget.CardView
+	OK
+- package name-> new-> java class-> ProductRVAdapter
+	- create inner for ViewHolder after implemet methods on clicking public ProductRVAdapter.ViewHolder method
 
 
 

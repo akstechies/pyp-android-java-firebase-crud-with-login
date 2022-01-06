@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton addFAB;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
-    private ArrayList<ProductRVModel> productRVModelArrayList; 
+    private ArrayList<ProductRVModel> productRVModelArrayList;
     private RelativeLayout mainRL;
 
 
@@ -37,6 +38,14 @@ public class MainActivity extends AppCompatActivity {
         addFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                firebaseDatabase = FirebaseDatabase.getInstance();
+
+                databaseReference = firebaseDatabase.getReference("Products");
+
+
+                Log.d("myTag", String.valueOf(databaseReference.get()));
+
                 Intent i = new Intent(MainActivity.this, AddProductActivity.class);
                 startActivity(i);
             }
