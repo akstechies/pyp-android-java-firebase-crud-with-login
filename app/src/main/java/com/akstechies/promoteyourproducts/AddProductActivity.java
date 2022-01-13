@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,7 +28,7 @@ public class AddProductActivity extends AppCompatActivity {
     private ProgressBar loadingPB;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
-    private String productId;
+    private String productId, userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +61,11 @@ public class AddProductActivity extends AppCompatActivity {
                 String productDescription = productDescriptionEdt.getText().toString();
                 productId = databaseReference.push().getKey(); //get the instance of firebase and get reference to child jobs then get the key. the key will be unique.
 
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                userId = user.getUid();
+
                 //Passing variables to model class -> ProductRVModel
-                ProductRVModel productRVModel = new ProductRVModel(productName, productPrice, productImageLink, productSuitedFor, productLink, productDescription, productId);
+                ProductRVModel productRVModel = new ProductRVModel(productName, productPrice, productImageLink, productSuitedFor, productLink, productDescription, productId, userId);
 
                 //Add to database
                 databaseReference.addValueEventListener(new ValueEventListener() {

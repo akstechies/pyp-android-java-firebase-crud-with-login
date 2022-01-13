@@ -12,6 +12,7 @@ public class ProductRVModel implements Parcelable {
     private String productLink;
     private String productDescription;
     private String productId;
+    private String userId;
 
     //Constructor -> required to perform crud operation
 
@@ -22,7 +23,7 @@ public class ProductRVModel implements Parcelable {
     //Generate Constructor, Getter and Setter => Right Click->Generate
 
 
-    public ProductRVModel(String productName, String productPrice, String productImageLink, String productSuitedFor, String productLink, String productDescription, String productId) {
+    public ProductRVModel(String productName, String productPrice, String productImageLink, String productSuitedFor, String productLink, String productDescription, String productId, String userId) {
         this.productName = productName;
         this.productPrice = productPrice;
         this.productImageLink = productImageLink;
@@ -30,6 +31,7 @@ public class ProductRVModel implements Parcelable {
         this.productLink = productLink;
         this.productDescription = productDescription;
         this.productId = productId;
+        this.userId = userId;
     }
 
     protected ProductRVModel(Parcel in) {
@@ -40,6 +42,7 @@ public class ProductRVModel implements Parcelable {
         productLink = in.readString();
         productDescription = in.readString();
         productId = in.readString();
+        userId = in.readString();
     }
 
     public static final Creator<ProductRVModel> CREATOR = new Creator<ProductRVModel>() {
@@ -108,6 +111,14 @@ public class ProductRVModel implements Parcelable {
 
     public void setProductId(String productId) {
         this.productId = productId;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     @Override

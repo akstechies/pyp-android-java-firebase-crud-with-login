@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements ProductRVAdapter.
     //After creating adapter
     private ProductRVAdapter productRVAdapter;
     private FirebaseAuth mAuth;
+    private String userId;
 
 
     @Override
@@ -65,24 +67,19 @@ public class MainActivity extends AppCompatActivity implements ProductRVAdapter.
         productRV.setAdapter(productRVAdapter);
         mAuth = FirebaseAuth.getInstance();
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        userId = user.getUid();
+
         addFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 firebaseDatabase = FirebaseDatabase.getInstance();
-
                 databaseReference = firebaseDatabase.getReference("Products");
-
-
-                Log.d("myTag", String.valueOf(databaseReference.get()));
-
                 Intent i = new Intent(MainActivity.this, AddProductActivity.class);
                 startActivity(i);
             }
         });
-
         getAllCourses();
-
     }
 
     private void getAllCourses() {
@@ -154,9 +151,13 @@ public class MainActivity extends AppCompatActivity implements ProductRVAdapter.
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, EditProductActivity.class);
-                intent.putExtra("product", productRVModel); //Edit product parcelable key
-                startActivity(intent);
+                if(userId.equals(productRVModel.getUserId())) {
+                    Intent intent = new Intent(MainActivity.this, EditProductActivity.class);
+                    intent.putExtra("product", productRVModel); //Edit product parcelable key
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(MainActivity.this, "You must be Authentic use to edit this..", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
