@@ -21,6 +21,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -47,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements ProductRVAdapter.
     private ProductRVAdapter productRVAdapter;
     private FirebaseAuth mAuth;
     private String userId;
+    private AdView mAdView;
 
 
     @Override
@@ -69,6 +75,17 @@ public class MainActivity extends AppCompatActivity implements ProductRVAdapter.
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         userId = user.getUid();
+
+        //Logics
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         addFAB.setOnClickListener(new View.OnClickListener() {
             @Override

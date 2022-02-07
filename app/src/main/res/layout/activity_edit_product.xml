@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".EditProductActivity">
+    tools:context=".EditProductActivity"
+    android:fillViewport="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -150,7 +151,8 @@
                     android:inputType="text"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp"
+                    android:maxLength="25"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -199,7 +201,16 @@
             android:indeterminateDrawable="@drawable/progress_back"
             android:visibility="gone"/>
 
-
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/admob_banner_ad_unit">
+        </com.google.android.gms.ads.AdView>
 
     </RelativeLayout>
 

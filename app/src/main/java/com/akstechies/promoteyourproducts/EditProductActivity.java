@@ -10,6 +10,11 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,6 +34,7 @@ public class EditProductActivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private String productId;
     private ProductRVModel productRVModel;
+    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +55,16 @@ public class EditProductActivity extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
 
         productRVModel = getIntent().getParcelableExtra("product");
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         if(productRVModel != null) {
             productNameEdt.setText(productRVModel.getProductName());

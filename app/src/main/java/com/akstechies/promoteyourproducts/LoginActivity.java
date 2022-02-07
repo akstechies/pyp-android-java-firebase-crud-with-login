@@ -12,6 +12,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -26,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressBar loadingPB;
     private FirebaseAuth mAuth;
     private TextView registerTV;
+    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +44,16 @@ public class LoginActivity extends AppCompatActivity {
         loadingPB = findViewById(R.id.idPBLoading);
         mAuth = FirebaseAuth.getInstance();
         registerTV = findViewById(R.id.idTVRegister);
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         registerTV.setOnClickListener(new View.OnClickListener() {
             @Override
